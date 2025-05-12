@@ -1,0 +1,35 @@
+Commands:
+
+1. Get to workspace:
+	cd workspaces/seth_workspace
+
+2. Nodes:
+	Build nodes:
+		colcon build --nodes-select nodes
+	
+	Run Main Publisher:
+		ros2 run nodes main_p
+		(Uncomment testing code segements as needed)
+
+	List of all nodes currently in nodes:
+		pub (basic publisher)
+		sub (basic subscriber)
+		main_p (main publisher)
+		motor_s (motor subscriber) [NOT IN USE AT CURRENT]
+		temp_s (temporary subscriber) [NOT  IN USE AT CURRENT]
+	
+	command for YOLOv8:
+		ros2 run yolo_motor_pkg yolo_motor_publisher
+
+3. cpp_svrcli:
+	Build cpp_srvcli:
+		colcon build --nodes-select cpp_svrcli
+		
+	list of all nodes currently in cpp_svrcli:
+		server (basic server)
+		client (basic client)
+
+EXTRAS:
+
+1. Arduino IDE Command:
+	flatpak run cc.arduino.arduinoide
