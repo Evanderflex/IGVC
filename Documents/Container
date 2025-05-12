@@ -1,0 +1,136 @@
+#New again Run the container
+
+cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
+./scripts/run_dev.sh -d ${ISAAC_ROS_WS}
+
+#old now Run container
+
+cd ~/workspaces/isaac_ros-dev/src/isaac_ros_common
+#./scripts/run_dev.sh -d ~/workspaces/isaac_ros-dev
+./src/isaac_ros_common/scripts/run_dev.sh -d ~/workspaces/isaac_ros-dev
+
+
+
+#build these two nodes from inside: cd /workspaces/isaac_ros-dev
+
+colcon build --symlink-install --packages-up-to realsense_splitter
+source install/setup.bash
+colcon build --packages-select obstacle_to_keyboard --symlink-install
+source install/setup.bash
+
+#Rviz
+
+ros2 launch nvblox_examples_bringup realsense_example.launch.py
+
+#Seth's program
+
+	cd workspaces/seth_workspace
+
+2. Run Main Publisher:
+	
+	ros2 run nodes main_p
+	
+
+#o to key
+
+cd /workspaces/isaac_ros-dev
+colcon build --packages-select obstacle_to_keyboard
+source install/setup.bash
+ros2 run obstacle_to_keyboard obstacle_to_keyboard
+
+
+#screen sharing on and off
+sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.disabled #off
+sudo systemctl restart gdm   # or: lightdm, sddm #restart
+sudo mv /etc/X11/xorg.conf.disabled /etc/X11/xorg.conf #on
+
+
+
+
+
+
+
+
+#This compiles for like 15 mintues to give us isaac ros, magic enum, foxglov, and yolo
+cd ~/workspaces/isaac_ros-dev
+rm -rf build install log
+	#and then
+source ~/workspaces/isaac_ros-dev/install/setup.bash
+	
+
+
+
+	#and then (in every new terminal after building...?)
+source install/setup.bash
+
+
+
+#Arduino
+
+#NEW cd ~/Downloads/arduino-1.8.19 
+	arduino
+	
+
+
+#from other machine
+ssh orinigvc@10.104.66.73
+
+#my dockerfile is here
+cd ~/workspaces/isaac_ros-dev/src/isaac_ros_common/docker
+
+
+#Build list baby
+
+colcon build --symlink-install --packages-select \
+  isaac_ros_common \
+  isaac_ros_pointcloud_interfaces \
+  isaac_ros_tensor_list_interfaces \
+  isaac_ros_test \
+  isaac_ros_test_cmake \
+  isaac_ros_gxf \
+  isaac_ros_launch_utils \
+  isaac_ros_nitros \
+  isaac_ros_nitros_camera_info_type \
+  isaac_ros_nitros_image_type \
+  isaac_ros_nitros_tensor_list_type \
+  isaac_ros_managed_nitros \
+  gxf_isaac_gems \
+  gxf_isaac_message_compositor \
+  gxf_isaac_optimizer \
+  gxf_isaac_sight \
+  gxf_isaac_atlas \
+  gxf_isaac_gxf_helpers \
+  nvblox_ros_python_utils \
+  nvblox_ros_common \
+  nvblox_msgs \
+  nvblox_image_padding \
+  nvblox_rviz_plugin \
+  nvblox_ros \
+  semantic_label_conversion \
+  realsense2_camera_msgs \
+  realsense_splitter \
+  yolov8_ros \
+  nvblox_examples_bringup
+
+
+
+
+
+
+#New nvblox
+cd ~/workspaces/isaac_ros-dev
+colcon build --packages-select nvblox_examples_bringup
+source install/setup.bash
+
+#WIFI
+
+#on
+sudo mv /etc/X11/xorg.conf.disabled /etc/X11/xorg.conf 
+#off
+sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.disabled
+#restart
+sudo systemctl restart gdm   # or: lightdm, sddm
+
+
+
+
