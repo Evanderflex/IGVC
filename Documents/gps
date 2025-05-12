@@ -1,0 +1,16 @@
+nano ~/LSL_ws/src/lslidar_gps_publisher/lslidar_gps_publisher/gps_publisher.py #slow down publishing rate
+
+#rebuild if anything changes
+cd ~/LSL_ws
+colcon build --packages-select lslidar_gps_publisher --symlink-install
+source install/setup.bash
+
+
+ros2 run lslidar_gps_publisher gps_publisher_node #test
+ros2 launch lslidar_gps_publisher gps_launch.py #run
+
+ros2 topic list | grep gps #confirm the gps data
+ros2 topic echo /lslidar/gps #check what is being published
+
+
+
